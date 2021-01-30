@@ -7,19 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D651C6425C5F31400C3DF19 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D651C6325C5F31400C3DF19 /* Shape.swift */; };
+		3D651C6725C5F38400C3DF19 /* Shape+Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D651C6625C5F38400C3DF19 /* Shape+Shapes.swift */; };
+		3D651C6E25C5F4FA00C3DF19 /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D651C6D25C5F4FA00C3DF19 /* ShapeView.swift */; };
+		3D651C7225C6032A00C3DF19 /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D651C7125C6032A00C3DF19 /* Brain.swift */; };
+		3D651C7925C6042400C3DF19 /* LatoGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D651C7825C6042400C3DF19 /* LatoGame.swift */; };
+		3D651C7D25C609CF00C3DF19 /* String+Count.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D651C7C25C609CF00C3DF19 /* String+Count.swift */; };
+		3D651C8025C61DCA00C3DF19 /* Shape+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D651C7F25C61DCA00C3DF19 /* Shape+Color.swift */; };
 		3DC8088C25C5D45000DF491A /* LatoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8088B25C5D45000DF491A /* LatoApp.swift */; };
-		3DC8088E25C5D45000DF491A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8088D25C5D45000DF491A /* ContentView.swift */; };
 		3DC8089025C5D45200DF491A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DC8088F25C5D45200DF491A /* Assets.xcassets */; };
 		3DC8089325C5D45200DF491A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DC8089225C5D45200DF491A /* Preview Assets.xcassets */; };
+		3DC808A325C5D75A00DF491A /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC808A225C5D75A00DF491A /* Cell.swift */; };
+		3DC808A725C5D89F00DF491A /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC808A625C5D89F00DF491A /* Board.swift */; };
+		3DC808AA25C5D90F00DF491A /* Board+Boards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC808A925C5D90F00DF491A /* Board+Boards.swift */; };
+		3DC808AD25C5DA4B00DF491A /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC808AC25C5DA4B00DF491A /* CellView.swift */; };
+		3DC808B025C5E0A000DF491A /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC808AF25C5E0A000DF491A /* String+Substring.swift */; };
+		3DC808B525C5F21400DF491A /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC808B425C5F21400DF491A /* BoardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D651C6325C5F31400C3DF19 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		3D651C6625C5F38400C3DF19 /* Shape+Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shape+Shapes.swift"; sourceTree = "<group>"; };
+		3D651C6D25C5F4FA00C3DF19 /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
+		3D651C7125C6032A00C3DF19 /* Brain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
+		3D651C7825C6042400C3DF19 /* LatoGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatoGame.swift; sourceTree = "<group>"; };
+		3D651C7C25C609CF00C3DF19 /* String+Count.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Count.swift"; sourceTree = "<group>"; };
+		3D651C7F25C61DCA00C3DF19 /* Shape+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shape+Color.swift"; sourceTree = "<group>"; };
 		3DC8088825C5D45000DF491A /* Lato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DC8088B25C5D45000DF491A /* LatoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatoApp.swift; sourceTree = "<group>"; };
-		3DC8088D25C5D45000DF491A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3DC8088F25C5D45200DF491A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DC8089225C5D45200DF491A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3DC8089425C5D45200DF491A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DC808A225C5D75A00DF491A /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		3DC808A625C5D89F00DF491A /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		3DC808A925C5D90F00DF491A /* Board+Boards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+Boards.swift"; sourceTree = "<group>"; };
+		3DC808AC25C5DA4B00DF491A /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		3DC808AF25C5E0A000DF491A /* String+Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
+		3DC808B425C5F21400DF491A /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D651C7625C6036000C3DF19 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3DC808AF25C5E0A000DF491A /* String+Substring.swift */,
+				3D651C7C25C609CF00C3DF19 /* String+Count.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		3DC8087F25C5D44F00DF491A = {
 			isa = PBXGroup;
 			children = (
@@ -52,10 +85,15 @@
 		3DC8088A25C5D45000DF491A /* Lato */ = {
 			isa = PBXGroup;
 			children = (
+				3D651C7125C6032A00C3DF19 /* Brain.swift */,
+				3D651C7825C6042400C3DF19 /* LatoGame.swift */,
+				3DC808B225C5E33300DF491A /* Shape */,
+				3DC808A525C5D89600DF491A /* Board */,
+				3DC8089B25C5D4F900DF491A /* Cell */,
 				3DC8088B25C5D45000DF491A /* LatoApp.swift */,
-				3DC8088D25C5D45000DF491A /* ContentView.swift */,
 				3DC8088F25C5D45200DF491A /* Assets.xcassets */,
 				3DC8089425C5D45200DF491A /* Info.plist */,
+				3D651C7625C6036000C3DF19 /* Extensions */,
 				3DC8089125C5D45200DF491A /* Preview Content */,
 			);
 			path = Lato;
@@ -67,6 +105,36 @@
 				3DC8089225C5D45200DF491A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3DC8089B25C5D4F900DF491A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3DC808A225C5D75A00DF491A /* Cell.swift */,
+				3DC808AC25C5DA4B00DF491A /* CellView.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3DC808A525C5D89600DF491A /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				3DC808A625C5D89F00DF491A /* Board.swift */,
+				3DC808A925C5D90F00DF491A /* Board+Boards.swift */,
+				3DC808B425C5F21400DF491A /* BoardView.swift */,
+			);
+			path = Board;
+			sourceTree = "<group>";
+		};
+		3DC808B225C5E33300DF491A /* Shape */ = {
+			isa = PBXGroup;
+			children = (
+				3D651C6325C5F31400C3DF19 /* Shape.swift */,
+				3D651C6625C5F38400C3DF19 /* Shape+Shapes.swift */,
+				3D651C6D25C5F4FA00C3DF19 /* ShapeView.swift */,
+				3D651C7F25C61DCA00C3DF19 /* Shape+Color.swift */,
+			);
+			path = Shape;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +206,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DC8088E25C5D45000DF491A /* ContentView.swift in Sources */,
 				3DC8088C25C5D45000DF491A /* LatoApp.swift in Sources */,
+				3DC808A725C5D89F00DF491A /* Board.swift in Sources */,
+				3DC808AD25C5DA4B00DF491A /* CellView.swift in Sources */,
+				3D651C6425C5F31400C3DF19 /* Shape.swift in Sources */,
+				3D651C6E25C5F4FA00C3DF19 /* ShapeView.swift in Sources */,
+				3D651C6725C5F38400C3DF19 /* Shape+Shapes.swift in Sources */,
+				3DC808AA25C5D90F00DF491A /* Board+Boards.swift in Sources */,
+				3D651C7925C6042400C3DF19 /* LatoGame.swift in Sources */,
+				3D651C7D25C609CF00C3DF19 /* String+Count.swift in Sources */,
+				3DC808B525C5F21400DF491A /* BoardView.swift in Sources */,
+				3DC808A325C5D75A00DF491A /* Cell.swift in Sources */,
+				3D651C8025C61DCA00C3DF19 /* Shape+Color.swift in Sources */,
+				3D651C7225C6032A00C3DF19 /* Brain.swift in Sources */,
+				3DC808B025C5E0A000DF491A /* String+Substring.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +360,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = juandahurt.Lato;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -302,7 +382,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = juandahurt.Lato;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
