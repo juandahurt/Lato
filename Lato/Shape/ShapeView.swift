@@ -10,18 +10,19 @@ import SwiftUI
 struct ShapeView: View {
     var shape: Shape
     var onChanged: () -> Void
+    var onDrop: () -> Void
     var locations: Binding<[CGRect]>
     @State private var dragAmount: CGSize = .zero
     @State private var cellIndex = 0
     
     var body: some View {
-        ForEach(shape.layout.indices) { rowIndex in
+        ForEach(shape.layout.indices, id: \.self) { rowIndex in
             HStack {
-                ForEach(0..<shape.layout[rowIndex].count) { colIndex in
+                ForEach(0..<shape.layout[rowIndex].count, id: \.self) { colIndex in
                     Group {
                         if shape.getCellAt(row: rowIndex, col: colIndex).state == .alive {
                             GeometryReader { geometry in
-                                CellView(color: shape.chooseShapeColor(for: shape.color))
+                                CellView(color: Shape.chooseShapeColor(for: shape.color))
                                     .onChange(of: dragAmount) { _ in
                                         locations.wrappedValue[cellIndex] = geometry.frame(in: .global)
                                         cellIndex += 1
@@ -48,6 +49,7 @@ struct ShapeView: View {
                 }
                 .onEnded { value in
                     dragAmount = .zero
+                    onDrop()
                 }
         )
     }

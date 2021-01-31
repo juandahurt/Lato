@@ -8,10 +8,15 @@
 import Foundation
 
 struct Board {
-    var layout: [String]
+    var layout: [[Int]]
+    
+    struct Coordiante: Equatable {
+        var row: Int
+        var col: Int
+    }
     
     func cellAt(row: Int, col: Int) -> Cell {
-        let value = layout[row].substring(with: col..<col+1)
+        let value = layout[row][col]
         return Cell(value: value)
     }
 }

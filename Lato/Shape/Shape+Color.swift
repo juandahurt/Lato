@@ -9,12 +9,16 @@ import Foundation
 import SwiftUI
 
 extension Shape {
-    func chooseShapeColor(for color: Shape.Color) -> SwiftUI.Color {
+    static func chooseShapeColor(for color: Shape.Color) -> SwiftUI.Color {
         switch color {
         case .red:
             return SwiftUI.Color("Red")
         case .yellow:
             return SwiftUI.Color("Yellow")
+        case .black:
+            return SwiftUI.Color("Black")
+        case .blue:
+            return SwiftUI.Color("Blue")
         }
     }
 }

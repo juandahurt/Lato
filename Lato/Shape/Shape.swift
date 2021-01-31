@@ -9,16 +9,14 @@ import Foundation
 
 struct Shape {
     enum Color {
-        case red, yellow
+        case red, yellow, black, blue
     }
-    var id: String
-    var height: Int
-    var width: Int
-    var layout: [String]
+    var id: Int
+    var layout: [[Int]]
     var color: Color
     
     func getCellAt(row: Int, col: Int) -> Cell {
-        let value = layout[row].substring(with: col..<col+1)
+        let value = layout[row][col]
         return Cell(value: value)
     }
 }

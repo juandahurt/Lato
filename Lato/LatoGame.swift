@@ -7,6 +7,14 @@
 
 import Foundation
 
-struct LatoGame {
+class LatoGame: ObservableObject {
+    @Published private(set) var game = Game(board: .diamond)
     
+    var board: Board {
+        game.board
+    }
+    
+    func put(shape: Shape, at coordinates: [Board.Coordiante]) {
+        game.put(shape: shape, at: coordinates)
+    }
 }

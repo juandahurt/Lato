@@ -11,7 +11,7 @@ import SwiftUI
 struct LatoApp: App {
     var body: some Scene {
         WindowGroup {
-            BoardView(board: .diamond)
+            BoardView(latoGame: LatoGame())
         }
     }
 }

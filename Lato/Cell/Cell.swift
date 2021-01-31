@@ -9,16 +9,26 @@ import Foundation
 
 struct Cell {
     enum State {
-        case alive, dead
+        case alive
+        case dead
     }
     
     var state: State
+    var shape: Shape?
     
-    init(value: String) {
-        if value == "0" {
+    init(value: Int) {
+        if value == 0 {
             state = .dead
         } else {
             state = .alive
+            if value != 1 {
+                for shape in Shape.shapes {
+                    if shape.id == value {
+                        self.shape = shape
+                        break
+                    }
+                }
+            }
         }
     }
 }
