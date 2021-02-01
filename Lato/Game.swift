@@ -9,11 +9,13 @@ import Foundation
 
 struct Game {
     var board: Board
+    var score: Int = 0
     
     mutating func put(shape: Shape, at coordinates: [Board.Coordiante]) {
         for coordinate in coordinates {
             board.layout[coordinate.row][coordinate.col] = shape.id
         }
+        score += 5
     }
     
     mutating func checkForFullLines(at coordinates: [Board.Coordiante]) -> [[Int]] {

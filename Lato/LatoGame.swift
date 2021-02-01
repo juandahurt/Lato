@@ -14,6 +14,10 @@ class LatoGame: ObservableObject {
         game.board
     }
     
+    var score: Int {
+        game.score
+    }
+    
     func put(shape: Shape, at coordinates: [Board.Coordiante]) {
         game.put(shape: shape, at: coordinates)
     }

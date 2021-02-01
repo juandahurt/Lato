@@ -40,7 +40,9 @@ struct BoardView: View {
     func onDropShape() {
         dyingLines.removeAll()
         if possibleDropCoordinates.count == 4 {
-            latoGame.put(shape: currentShape, at: possibleDropCoordinates)
+            withAnimation(.easeIn) {
+                latoGame.put(shape: currentShape, at: possibleDropCoordinates)
+            }
             dyingLines = latoGame.checkForFullLines(at: possibleDropCoordinates)
             possibleDropCoordinates.removeAll()
             var randomShape = Shape.shapes.randomElement()!
@@ -80,10 +82,24 @@ struct BoardView: View {
             .animation(animate ? Animation.easeOut.delay(Double(coordinate.row + coordinate.col) * 0.05) : .none)
     }
     
+    var score: some View {
+        VStack {
+            Text("SCORE")
+                .foregroundColor(Color("Red"))
+            Text("\(latoGame.score)")
+                .foregroundColor(.black)
+                .transition(.scale)
+                .id("Score \(latoGame.score)")
+        }
+        .font(.custom("Poppins-SemiBold", size: 20))
+    }
+    
     var body: some View {
         ZStack {
             VStack {
-                Spacer()
+                score
+                    .padding(.top, 10)
+                    .padding(.bottom, 20)
                 ForEach(latoGame.board.layout.indices, id: \.self) { rowIndex in
                     HStack {
                         ForEach(0..<latoGame.board.layout[rowIndex].count) { colIndex in
@@ -115,7 +131,6 @@ struct BoardView: View {
                         currentShape = Shape.shapes.randomElement()!
                     }
                 }
-//                Spacer(minLength: 0)
             }
             .frame(width: UIScreen.main.bounds.width)
             .padding(.bottom, 20)
