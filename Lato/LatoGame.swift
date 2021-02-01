@@ -17,4 +17,8 @@ class LatoGame: ObservableObject {
     func put(shape: Shape, at coordinates: [Board.Coordiante]) {
         game.put(shape: shape, at: coordinates)
     }
+    
+    func checkForFullLines(at coordinates: [Board.Coordiante]) -> [[Int]] {
+        game.checkForFullLines(at: coordinates)
+    }
 }

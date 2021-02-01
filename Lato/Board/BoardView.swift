@@ -12,9 +12,11 @@ struct BoardView: View {
     @State private var possibleDropCoordinates: [Board.Coordiante] = []
     @State private var cellsLocations: [[CGRect]] = [[CGRect]](repeating: [CGRect](repeating: .zero, count: 7), count: 10)
     @State private var currentShapeLocations: [CGRect] = [CGRect](repeating: .zero, count: 4)
-    @State private var currentShape: Shape = .snake
+    @State private var currentShape: Shape = Shape.shapes.randomElement()!
+    @State private var dyingLines: [[Int]] = []
 
     func updatePossibleDropLocation() {
+        dyingLines.removeAll()
         var validCells = 0
         possibleDropCoordinates.removeAll()
         for row in cellsLocations.indices {
@@ -36,14 +38,28 @@ struct BoardView: View {
     }
     
     func onDropShape() {
+        dyingLines.removeAll()
         if possibleDropCoordinates.count == 4 {
             latoGame.put(shape: currentShape, at: possibleDropCoordinates)
-            currentShape = Shape.shapes.randomElement()!
+            dyingLines = latoGame.checkForFullLines(at: possibleDropCoordinates)
+            possibleDropCoordinates.removeAll()
+            var randomShape = Shape.shapes.randomElement()!
+            while randomShape == currentShape {
+                randomShape = Shape.shapes.randomElement()!
+            }
+            currentShape = randomShape
         }
     }
     
     func draw(cell: Cell, at coordinate: Board.Coordiante) -> some View {
         var color: Color = .clear
+        var animateRow = false
+        var animateCol = false
+        if dyingLines.count > 0 {
+            animateRow = dyingLines[0].contains(coordinate.row)
+            animateCol = dyingLines[1].contains(coordinate.col)
+        }
+        let animate = animateRow || animateCol
         
         if let shape = cell.shape {
             color = Shape.chooseShapeColor(for: shape.color)
@@ -61,34 +77,48 @@ struct BoardView: View {
                     }
             }
         )
-            .animation(.easeIn)
+            .animation(animate ? Animation.easeOut.delay(Double(coordinate.row + coordinate.col) * 0.05) : .none)
     }
     
     var body: some View {
-        VStack {
-            Spacer()
-            ForEach(latoGame.board.layout.indices, id: \.self) { rowIndex in
-                HStack {
-                    ForEach(0..<latoGame.board.layout[rowIndex].count) { colIndex in
-                        Group {
-                            if latoGame.board.cellAt(row: rowIndex, col: colIndex).state == .dead {
-                                CellView(color: Color("Background"))
-                            }
-                            else {
-                                draw(cell: latoGame.board.cellAt(row: rowIndex, col: colIndex), at: Board.Coordiante(row: rowIndex, col: colIndex))
+        ZStack {
+            VStack {
+                Spacer()
+                ForEach(latoGame.board.layout.indices, id: \.self) { rowIndex in
+                    HStack {
+                        ForEach(0..<latoGame.board.layout[rowIndex].count) { colIndex in
+                            Group {
+                                if latoGame.board.cellAt(row: rowIndex, col: colIndex).state == .dead {
+                                    CellView(color: Color("Background"))
+                                }
+                                else {
+                                    draw(cell: latoGame.board.cellAt(row: rowIndex, col: colIndex), at: Board.Coordiante(row: rowIndex, col: colIndex))
+                                }
                             }
                         }
                     }
                 }
+                Spacer()
             }
-            Spacer()
-            ShapeView(
-                shape: currentShape,
-                onChanged: updatePossibleDropLocation,
-                onDrop: onDropShape,
-                locations: $currentShapeLocations
-            )
-            Spacer()
+            .padding(.bottom, 80)
+            VStack {
+                Spacer()
+                ShapeView(
+                    shape: currentShape,
+                    onChanged: updatePossibleDropLocation,
+                    onDrop: onDropShape,
+                    locations: $currentShapeLocations
+                )
+                .transition(.scale)
+                .onTapGesture {
+                    withAnimation(.easeOut) {
+                        currentShape = Shape.shapes.randomElement()!
+                    }
+                }
+//                Spacer(minLength: 0)
+            }
+            .frame(width: UIScreen.main.bounds.width)
+            .padding(.bottom, 20)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("Background"))

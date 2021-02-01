@@ -43,5 +43,15 @@ extension Shape {
         color: .blue
     )
     
-    static let shapes: [Shape] = [.square, .line, .snake, .mrT]
+    static let misL = Shape(
+        id: -5,
+        layout: [
+            [0,1,0],
+            [0,1,0],
+            [0,1,1]
+        ],
+        color: .green
+    )
+    
+    static let shapes: [Shape] = [.square, .line, .snake, .mrT, .misL]
 }

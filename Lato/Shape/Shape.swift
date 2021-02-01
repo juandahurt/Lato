@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Shape {
+struct Shape: Equatable {
     enum Color {
-        case red, yellow, black, blue
+        case red, yellow, black, blue, green
     }
     var id: Int
     var layout: [[Int]]

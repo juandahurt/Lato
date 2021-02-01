@@ -19,6 +19,8 @@ extension Shape {
             return SwiftUI.Color("Black")
         case .blue:
             return SwiftUI.Color("Blue")
+        case .green:
+            return SwiftUI.Color("Green")
         }
     }
 }
