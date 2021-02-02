@@ -14,6 +14,7 @@ struct BoardView: View {
     @State private var currentShapeLocations: [CGRect] = [CGRect](repeating: .zero, count: 4)
     @State private var currentShape: Shape = Shape.shapes.randomElement()!
     @State private var dyingLines: [[Int]] = []
+    @State private var shapeOffset: CGFloat = -200
 
     func updatePossibleDropLocation() {
         dyingLines.removeAll()
@@ -125,10 +126,19 @@ struct BoardView: View {
                     onDrop: onDropShape,
                     locations: $currentShapeLocations
                 )
-                .transition(.scale)
                 .onTapGesture {
-                    withAnimation(.easeOut) {
-                        currentShape = Shape.shapes.randomElement()!
+                    latoGame.rotate(&currentShape)
+                }
+                .offset(x: shapeOffset, y: 0)
+                .onAppear {
+                    withAnimation(.easeInOut) {
+                        shapeOffset = 0
+                    }
+                }
+                .onChange(of: currentShape.id) { _ in
+                    shapeOffset = -200
+                    withAnimation(.easeInOut) {
+                        shapeOffset = 0
                     }
                 }
             }

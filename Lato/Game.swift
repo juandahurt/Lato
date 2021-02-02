@@ -47,6 +47,11 @@ struct Game {
                 }
             }
         }
+        score += 10 * (fullRows.count + fullCols.count)
         return [fullRows, fullCols]
+    }
+    
+    func rotate(_ shape: inout Shape) {
+        shape.rotate()
     }
 }

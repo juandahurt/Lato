@@ -25,4 +25,8 @@ class LatoGame: ObservableObject {
     func checkForFullLines(at coordinates: [Board.Coordiante]) -> [[Int]] {
         game.checkForFullLines(at: coordinates)
     }
+    
+    func rotate(_ shape: inout Shape) {
+        game.rotate(&shape)
+    }
 }
