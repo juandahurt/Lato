@@ -15,6 +15,9 @@ struct BoardView: View {
     @State private var currentShape: Shape = Shape.shapes.randomElement()!
     @State private var dyingLines: [[Int]] = []
     @State private var shapeOffset: CGFloat = -200
+    @State private var boardOffset: CGFloat = -UIScreen.main.bounds.width
+    var onSettingsTap: () -> Void
+    var isMovingToSettingsView: Binding<Bool>
 
     func updatePossibleDropLocation() {
         dyingLines.removeAll()
@@ -62,7 +65,7 @@ struct BoardView: View {
             animateRow = dyingLines[0].contains(coordinate.row)
             animateCol = dyingLines[1].contains(coordinate.col)
         }
-        let animate = animateRow || animateCol
+        let animate = animateRow || animateCol || isMovingToSettingsView.wrappedValue
         
         if let shape = cell.shape {
             color = Shape.chooseShapeColor(for: shape.color)
@@ -71,16 +74,18 @@ struct BoardView: View {
         }
         
         return CellView(color: color)
+        .offset(x: boardOffset, y: 0)
         .overlay(
             GeometryReader { geometry in
                 Rectangle()
                     .fill(Color.clear)
                     .onAppear {
+                        boardOffset = 0
                         cellsLocations[coordinate.row][coordinate.col] = geometry.frame(in: .global)
                     }
             }
         )
-            .animation(animate ? Animation.easeOut.delay(Double(coordinate.row + coordinate.col) * 0.05) : .none)
+            .animation(animate ? Animation.easeOut.delay(Double(coordinate.row + coordinate.col) * 0.04) : .none)
     }
     
     var score: some View {
@@ -167,6 +172,9 @@ struct BoardView: View {
                         }
                     Spacer()
                     Image("Settings")
+                        .onTapGesture {
+                            onSettingsTap()
+                        }
                 }
                 .padding(.horizontal, 20)
             }

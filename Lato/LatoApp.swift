@@ -9,9 +9,30 @@ import SwiftUI
 
 @main
 struct LatoApp: App {
+    @State private var showBoard = true
+    @State private var isMovingToSettingsView = false
+    
     var body: some Scene {
         WindowGroup {
-            BoardView(latoGame: LatoGame())
+            if showBoard {
+                BoardView(
+                    latoGame: LatoGame(),
+                    onSettingsTap: {
+                        isMovingToSettingsView = true
+                        showBoard = false
+                    },
+                    isMovingToSettingsView: $isMovingToSettingsView
+                )
+            } else {
+                SettingsView(
+                    onBackTap: {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            isMovingToSettingsView = false
+                        }
+                        showBoard = true
+                    }
+                )
+            }
         }
     }
 }
