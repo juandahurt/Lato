@@ -88,9 +88,21 @@ struct BoardView: View {
             Text("SCORE")
                 .foregroundColor(Color("Red"))
             Text("\(latoGame.score)")
-                .foregroundColor(.black)
+                .foregroundColor(Color("Black"))
                 .transition(.scale)
                 .id("Score \(latoGame.score)")
+        }
+        .font(.custom("Poppins-SemiBold", size: 20))
+    }
+    
+    var moves: some View {
+        VStack {
+            Text("MOVES")
+                .foregroundColor(Color("Blue"))
+            Text("\(latoGame.moves)")
+                .foregroundColor(Color("Black"))
+                .transition(.scale)
+                .id("Score \(latoGame.moves)")
         }
         .font(.custom("Poppins-SemiBold", size: 20))
     }
@@ -98,9 +110,14 @@ struct BoardView: View {
     var body: some View {
         ZStack {
             VStack {
-                score
+                HStack {
+                    score
+                    Spacer()
+                    moves
+                }
                     .padding(.top, 10)
                     .padding(.bottom, 20)
+                    .padding(.horizontal, 20)
                 ForEach(latoGame.board.layout.indices, id: \.self) { rowIndex in
                     HStack {
                         ForEach(0..<latoGame.board.layout[rowIndex].count) { colIndex in
@@ -141,6 +158,18 @@ struct BoardView: View {
                         shapeOffset = 0
                     }
                 }
+                HStack {
+                    Image("Restart")
+                        .onTapGesture {
+                            withAnimation(.easeIn) {
+                                latoGame.restart()
+                                currentShape = Shape.shapes.randomElement()!
+                            }
+                        }
+                    Spacer()
+                    Image("Settings")
+                }
+                .padding(.horizontal, 20)
             }
             .frame(width: UIScreen.main.bounds.width)
             .padding(.bottom, 20)

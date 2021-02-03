@@ -10,12 +10,14 @@ import Foundation
 struct Game {
     var board: Board
     var score: Int = 0
+    var moves: Int = 0
     
     mutating func put(shape: Shape, at coordinates: [Board.Coordiante]) {
         for coordinate in coordinates {
             board.layout[coordinate.row][coordinate.col] = shape.id
         }
         score += 5
+        moves += 1
     }
     
     mutating func checkForFullLines(at coordinates: [Board.Coordiante]) -> [[Int]] {
@@ -53,5 +55,11 @@ struct Game {
     
     func rotate(_ shape: inout Shape) {
         shape.rotate()
+    }
+    
+    mutating func restart() {
+        score = 0
+        moves = 0
+        self.board = .diamond
     }
 }

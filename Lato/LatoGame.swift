@@ -18,6 +18,10 @@ class LatoGame: ObservableObject {
         game.score
     }
     
+    var moves: Int {
+        game.moves
+    }
+    
     func put(shape: Shape, at coordinates: [Board.Coordiante]) {
         game.put(shape: shape, at: coordinates)
     }
@@ -28,5 +32,9 @@ class LatoGame: ObservableObject {
     
     func rotate(_ shape: inout Shape) {
         game.rotate(&shape)
+    }
+    
+    func restart() {
+        game.restart()
     }
 }
