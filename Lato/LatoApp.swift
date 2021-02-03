@@ -11,12 +11,13 @@ import SwiftUI
 struct LatoApp: App {
     @State private var showBoard = true
     @State private var isMovingToSettingsView = false
+    private var latoGame = LatoGame()
     
     var body: some Scene {
         WindowGroup {
             if showBoard {
                 BoardView(
-                    latoGame: LatoGame(),
+                    latoGame: latoGame,
                     onSettingsTap: {
                         isMovingToSettingsView = true
                         showBoard = false
