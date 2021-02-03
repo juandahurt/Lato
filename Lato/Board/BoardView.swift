@@ -116,7 +116,6 @@ struct BoardView: View {
                     moves
                 }
                     .padding(.top, 10)
-                    .padding(.bottom, 20)
                     .padding(.horizontal, 20)
                 ForEach(latoGame.board.layout.indices, id: \.self) { rowIndex in
                     HStack {
