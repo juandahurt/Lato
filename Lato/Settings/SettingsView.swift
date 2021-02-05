@@ -37,10 +37,17 @@ struct SettingsView: View {
                 RoundedRectangle(cornerRadius: 15)
                     .fill(Color("Background-Dark"))
                     .frame(width: 40, height: 40)
-                Image("Check")
+                Group {
+                    if userSettings.playSound {
+                        Image("Check")
+                    }
+                }
             }
-            Text("Sound effects")
+            Text("Sound")
                 .foregroundColor(.black)
+        }
+        .onTapGesture {
+            userSettings.playSound.toggle()
         }
     }
     
