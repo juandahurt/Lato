@@ -9,7 +9,6 @@ import Foundation
 
 struct Game {
     var board: Board
-    var score: Int = 0
     var moves: Int = 0
     var currentShape: Shape = Shape.shapes.randomElement()!
     
@@ -17,7 +16,6 @@ struct Game {
         for coordinate in coordinates {
             board.layout[coordinate.row][coordinate.col] = shape.id
         }
-        score += 5
         moves += 1
         var randomShape = Shape.shapes.randomElement()!
         while randomShape == currentShape {
@@ -55,7 +53,6 @@ struct Game {
                 }
             }
         }
-        score += 10 * (fullRows.count + fullCols.count)
         return [fullRows, fullCols]
     }
     
@@ -64,10 +61,14 @@ struct Game {
     }
     
     mutating func restart() {
-        score = 0
         moves = 0
-        self.board = .diamond
-        currentShape = Shape.shapes.randomElement()!
+        for rowIndex in board.layout.indices {
+            for colIndex in board.layout[rowIndex].indices {
+                if board.layout[rowIndex][colIndex] != 0 {
+                    board.layout[rowIndex][colIndex] = 1
+                }
+            }
+        }
     }
     
     mutating func set(board: Board) {

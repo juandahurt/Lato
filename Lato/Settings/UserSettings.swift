@@ -7,12 +7,8 @@
 
 import Foundation
 
-class UserSettings: Equatable, ObservableObject {
+class UserSettings: ObservableObject {
     @Published var selectedBoard: Board
-    
-    static func == (lhs: UserSettings, rhs: UserSettings) -> Bool {
-        lhs.selectedBoard.id == rhs.selectedBoard.id
-    }
     
     init(selectedBoard: Board) {
         self.selectedBoard = selectedBoard

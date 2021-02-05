@@ -14,10 +14,6 @@ class LatoGame: ObservableObject {
         game.board
     }
     
-    var score: Int {
-        game.score
-    }
-    
     var moves: Int {
         game.moves
     }

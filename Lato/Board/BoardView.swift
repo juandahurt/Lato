@@ -13,7 +13,7 @@ struct BoardView: View {
     @State private var cellsLocations: [[CGRect]] = [[CGRect]](repeating: [CGRect](repeating: .zero, count: 7), count: 10)
     @State private var currentShapeLocations: [CGRect] = [CGRect](repeating: .zero, count: 4)
     @State private var dyingLines: [[Int]] = []
-    @State private var shapeOffset: CGFloat = -200
+    @State private var shapeOffset: CGFloat = -300
     @State private var boardOffset: CGFloat = -UIScreen.main.bounds.width
     var onSettingsTap: () -> Void
     var isMovingToSettingsView: Binding<Bool>
@@ -82,38 +82,18 @@ struct BoardView: View {
             .animation(animate ? Animation.easeOut.delay(Double(coordinate.row + coordinate.col) * 0.04) : .none)
     }
     
-    var score: some View {
-        VStack {
-            Text("SCORE")
-                .foregroundColor(Color("Red"))
-            Text("\(latoGame.score)")
-                .foregroundColor(Color("Black"))
-                .transition(.scale)
-                .id("Score \(latoGame.score)")
-        }
-        .font(.custom("Poppins-SemiBold", size: 20))
-    }
-    
     var moves: some View {
-        VStack {
-            Text("MOVES")
-                .foregroundColor(Color("Blue"))
-            Text("\(latoGame.moves)")
-                .foregroundColor(Color("Black"))
-                .transition(.scale)
-                .id("Score \(latoGame.moves)")
-        }
-        .font(.custom("Poppins-SemiBold", size: 20))
+        Text("\(latoGame.moves)")
+            .foregroundColor(Color("Black"))
+            .transition(.scale)
+            .id("Moves \(latoGame.moves)")
+            .font(.custom("Poppins-SemiBold", size: 50))
     }
     
     var body: some View {
         ZStack {
             VStack {
-                HStack {
-                    score
-                    Spacer()
-                    moves
-                }
+                moves
                     .padding(.top, 10)
                     .padding(.horizontal, 20)
                 ForEach(latoGame.board.layout.indices, id: \.self) { rowIndex in
@@ -146,13 +126,13 @@ struct BoardView: View {
                 }
                 .offset(x: shapeOffset, y: 0)
                 .onAppear {
-                    withAnimation(.easeInOut) {
+                    withAnimation(Animation.easeInOut.delay(0.2)) {
                         shapeOffset = 0
                     }
                 }
                 .onChange(of: latoGame.currentShape.id) { _ in
-                    shapeOffset = -200
-                    withAnimation(.easeInOut) {
+                    shapeOffset = -300
+                    withAnimation(Animation.easeInOut.delay(0.2)) {
                         shapeOffset = 0
                     }
                 }

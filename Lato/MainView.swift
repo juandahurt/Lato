@@ -19,23 +19,29 @@ struct MainView: View {
                 latoGame: latoGame,
                 onSettingsTap: {
                     isMovingToSettingsView = true
-                    showBoard = false
+                    withAnimation(.easeIn) {
+                        showBoard = false
+                    }
                 },
                 isMovingToSettingsView: $isMovingToSettingsView
             )
+            .transition(.slide)
         } else {
             SettingsView(
                 onBackTap: {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) {
                         isMovingToSettingsView = false
                     }
-                    showBoard = true
+                    withAnimation(.easeIn) {
+                        showBoard = true
+                    }
                     if userSettings.selectedBoard.id != latoGame.board.id {
                         latoGame.restart()
                         latoGame.set(board: userSettings.selectedBoard)
                     }
                 }
             )
+            .transition(.slide)
         }
     }
 }
