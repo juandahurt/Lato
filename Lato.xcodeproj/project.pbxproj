@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D34460625CD8B44005D1C04 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D34460525CD8B44005D1C04 /* MainView.swift */; };
 		3D5C0FC825C7A1590093CB5F /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D5C0FC725C7A1590093CB5F /* Poppins-SemiBold.ttf */; };
 		3D651C6425C5F31400C3DF19 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D651C6325C5F31400C3DF19 /* Shape.swift */; };
 		3D651C6725C5F38400C3DF19 /* Shape+Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D651C6625C5F38400C3DF19 /* Shape+Shapes.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D34460525CD8B44005D1C04 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3D5C0FC725C7A1590093CB5F /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		3D651C6325C5F31400C3DF19 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		3D651C6625C5F38400C3DF19 /* Shape+Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shape+Shapes.swift"; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				3DC808A525C5D89600DF491A /* Board */,
 				3DC8089B25C5D4F900DF491A /* Cell */,
 				3DC8088B25C5D45000DF491A /* LatoApp.swift */,
+				3D34460525CD8B44005D1C04 /* MainView.swift */,
 				3DC8088F25C5D45200DF491A /* Assets.xcassets */,
 				3DC8089425C5D45200DF491A /* Info.plist */,
 				3DC8089125C5D45200DF491A /* Preview Content */,
@@ -231,6 +234,7 @@
 				3D651C8025C61DCA00C3DF19 /* Shape+Color.swift in Sources */,
 				3D94A3CD25CB473B00EE50FF /* UserSettings.swift in Sources */,
 				3D651C7225C6032A00C3DF19 /* Game.swift in Sources */,
+				3D34460625CD8B44005D1C04 /* MainView.swift in Sources */,
 				3D94A3CA25CB02BD00EE50FF /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

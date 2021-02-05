@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var userSettings: UserSettings
     var onBackTap: () -> Void
     
     var navBar: some View {
@@ -39,6 +40,7 @@ struct SettingsView: View {
                 Image("Check")
             }
             Text("Sound effects")
+                .foregroundColor(.black)
         }
     }
     
@@ -57,7 +59,7 @@ struct SettingsView: View {
                                 .frame(width: 125, height: 173)
                             draw(board: board)
                             Group {
-                                if board.id == Board.diamond.id {
+                                if board.id == userSettings.selectedBoard.id {
                                     ZStack {
                                         Circle()
                                             .fill(Color.white)
@@ -67,6 +69,9 @@ struct SettingsView: View {
                                     .offset(x: 0, y: 173 / 2)
                                 }
                             }
+                        }
+                        .onTapGesture {
+                            userSettings.selectedBoard = board
                         }
                     }
                 }

@@ -11,6 +11,7 @@ struct Game {
     var board: Board
     var score: Int = 0
     var moves: Int = 0
+    var currentShape: Shape = Shape.shapes.randomElement()!
     
     mutating func put(shape: Shape, at coordinates: [Board.Coordiante]) {
         for coordinate in coordinates {
@@ -18,6 +19,11 @@ struct Game {
         }
         score += 5
         moves += 1
+        var randomShape = Shape.shapes.randomElement()!
+        while randomShape == currentShape {
+            randomShape = Shape.shapes.randomElement()!
+        }
+        currentShape = randomShape
     }
     
     mutating func checkForFullLines(at coordinates: [Board.Coordiante]) -> [[Int]] {
@@ -53,13 +59,18 @@ struct Game {
         return [fullRows, fullCols]
     }
     
-    func rotate(_ shape: inout Shape) {
-        shape.rotate()
+    mutating func rotate() {
+        currentShape.rotate()
     }
     
     mutating func restart() {
         score = 0
         moves = 0
         self.board = .diamond
+        currentShape = Shape.shapes.randomElement()!
+    }
+    
+    mutating func set(board: Board) {
+        self.board = board
     }
 }

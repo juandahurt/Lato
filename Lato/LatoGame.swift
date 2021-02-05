@@ -22,6 +22,10 @@ class LatoGame: ObservableObject {
         game.moves
     }
     
+    var currentShape: Shape {
+        game.currentShape
+    }
+    
     func put(shape: Shape, at coordinates: [Board.Coordiante]) {
         game.put(shape: shape, at: coordinates)
     }
@@ -30,11 +34,15 @@ class LatoGame: ObservableObject {
         game.checkForFullLines(at: coordinates)
     }
     
-    func rotate(_ shape: inout Shape) {
-        game.rotate(&shape)
+    func rotate() {
+        game.rotate()
     }
     
     func restart() {
         game.restart()
+    }
+    
+    func set(board: Board) {
+        game.board = board
     }
 }

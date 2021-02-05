@@ -12,7 +12,6 @@ struct BoardView: View {
     @State private var possibleDropCoordinates: [Board.Coordiante] = []
     @State private var cellsLocations: [[CGRect]] = [[CGRect]](repeating: [CGRect](repeating: .zero, count: 7), count: 10)
     @State private var currentShapeLocations: [CGRect] = [CGRect](repeating: .zero, count: 4)
-    @State private var currentShape: Shape = Shape.shapes.randomElement()!
     @State private var dyingLines: [[Int]] = []
     @State private var shapeOffset: CGFloat = -200
     @State private var boardOffset: CGFloat = -UIScreen.main.bounds.width
@@ -45,15 +44,10 @@ struct BoardView: View {
         dyingLines.removeAll()
         if possibleDropCoordinates.count == 4 {
             withAnimation(.easeIn) {
-                latoGame.put(shape: currentShape, at: possibleDropCoordinates)
+                latoGame.put(shape: latoGame.currentShape, at: possibleDropCoordinates)
             }
             dyingLines = latoGame.checkForFullLines(at: possibleDropCoordinates)
             possibleDropCoordinates.removeAll()
-            var randomShape = Shape.shapes.randomElement()!
-            while randomShape == currentShape {
-                randomShape = Shape.shapes.randomElement()!
-            }
-            currentShape = randomShape
         }
     }
     
@@ -70,7 +64,7 @@ struct BoardView: View {
         if let shape = cell.shape {
             color = Shape.chooseShapeColor(for: shape.color)
         } else {
-            color = possibleDropCoordinates.contains(coordinate) ? Shape.chooseShapeColor(for: currentShape.color).opacity(0.4) : Color("Background-Dark")
+            color = possibleDropCoordinates.contains(coordinate) ? Shape.chooseShapeColor(for: latoGame.currentShape.color).opacity(0.4) : Color("Background-Dark")
         }
         
         return CellView(color: color)
@@ -142,13 +136,13 @@ struct BoardView: View {
             VStack {
                 Spacer()
                 ShapeView(
-                    shape: currentShape,
+                    shape: latoGame.currentShape,
                     onChanged: updatePossibleDropLocation,
                     onDrop: onDropShape,
                     locations: $currentShapeLocations
                 )
                 .onTapGesture {
-                    latoGame.rotate(&currentShape)
+                    latoGame.rotate()
                 }
                 .offset(x: shapeOffset, y: 0)
                 .onAppear {
@@ -156,7 +150,7 @@ struct BoardView: View {
                         shapeOffset = 0
                     }
                 }
-                .onChange(of: currentShape.id) { _ in
+                .onChange(of: latoGame.currentShape.id) { _ in
                     shapeOffset = -200
                     withAnimation(.easeInOut) {
                         shapeOffset = 0
@@ -167,7 +161,6 @@ struct BoardView: View {
                         .onTapGesture {
                             withAnimation(.easeIn) {
                                 latoGame.restart()
-                                currentShape = Shape.shapes.randomElement()!
                             }
                         }
                     Spacer()
