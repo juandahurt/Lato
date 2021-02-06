@@ -13,6 +13,11 @@ class UserSettings: ObservableObject {
     
     init(selectedBoard: Board) {
         self.selectedBoard = selectedBoard
-        playSound = true
+        playSound = Bool(FileHelper().read(contentsOf: "sound.txt") ?? "true")!
+    }
+    
+    func setPlaySound(value: Bool) {
+        FileHelper().write(String(value), to: "sound.txt")
+        playSound = value
     }
 }

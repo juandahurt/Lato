@@ -18,6 +18,10 @@ class LatoGame: ObservableObject {
         game.moves
     }
     
+    var best: Int {
+        game.bestScore
+    }
+    
     var currentShape: Shape {
         game.currentShape
     }

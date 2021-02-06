@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3D23264025CDB5C10046B5D8 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D23263F25CDB5C10046B5D8 /* background.mp3 */; };
 		3D23264525CDB7460046B5D8 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23264425CDB7460046B5D8 /* AudioPlayer.swift */; };
+		3D25114825CEF31B0042546B /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D25114725CEF31A0042546B /* FileHelper.swift */; };
 		3D34460625CD8B44005D1C04 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D34460525CD8B44005D1C04 /* MainView.swift */; };
 		3D5C0FC825C7A1590093CB5F /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D5C0FC725C7A1590093CB5F /* Poppins-SemiBold.ttf */; };
 		3D651C6425C5F31400C3DF19 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D651C6325C5F31400C3DF19 /* Shape.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		3D23263F25CDB5C10046B5D8 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 		3D23264425CDB7460046B5D8 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		3D25114725CEF31A0042546B /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		3D34460525CD8B44005D1C04 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3D5C0FC725C7A1590093CB5F /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		3D651C6325C5F31400C3DF19 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		3D25114625CEF2EE0042546B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3D25114725CEF31A0042546B /* FileHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		3D5C0FC625C7A10D0093CB5F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +128,7 @@
 		3DC8088A25C5D45000DF491A /* Lato */ = {
 			isa = PBXGroup;
 			children = (
+				3D25114625CEF2EE0042546B /* Helpers */,
 				3D23264325CDB7370046B5D8 /* Media */,
 				3D94A3C825CB02AF00EE50FF /* Settings */,
 				3D5C0FC625C7A10D0093CB5F /* Fonts */,
@@ -257,6 +268,7 @@
 				3D651C8025C61DCA00C3DF19 /* Shape+Color.swift in Sources */,
 				3D23264525CDB7460046B5D8 /* AudioPlayer.swift in Sources */,
 				3D94A3CD25CB473B00EE50FF /* UserSettings.swift in Sources */,
+				3D25114825CEF31B0042546B /* FileHelper.swift in Sources */,
 				3D651C7225C6032A00C3DF19 /* Game.swift in Sources */,
 				3D34460625CD8B44005D1C04 /* MainView.swift in Sources */,
 				3D94A3CA25CB02BD00EE50FF /* SettingsView.swift in Sources */,
@@ -317,7 +329,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -372,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -397,6 +409,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = juandahurt.Lato;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -419,6 +432,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = juandahurt.Lato;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

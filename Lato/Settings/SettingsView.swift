@@ -47,7 +47,7 @@ struct SettingsView: View {
                 .foregroundColor(.black)
         }
         .onTapGesture {
-            userSettings.playSound.toggle()
+            userSettings.setPlaySound(value: !userSettings.playSound)
         }
     }
     
@@ -101,12 +101,24 @@ struct SettingsView: View {
         }
     }
     
+    var credits: some View {
+        HStack {
+            Spacer()
+            Text(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String + " - juandahurt")
+                .foregroundColor(Color("Background-Dark"))
+                .font(.custom("Poppins-SemiBold", size: 12))
+            Spacer()
+        }
+        .padding(.bottom, 15)
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             navBar
             settings
             boardPicker
             Spacer()
+            credits
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal, 20)

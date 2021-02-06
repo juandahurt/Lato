@@ -90,21 +90,37 @@ struct BoardView: View {
             .font(.custom("Poppins-SemiBold", size: 50))
     }
     
+    var best: some View {
+        HStack {
+            Text("BEST: \(latoGame.best)")
+                .font(.custom("Poppins-SemiBold", size: 20))
+                .foregroundColor(Color("Background-Dark"))
+        }
+    }
+    
     var body: some View {
         ZStack {
-            VStack {
-                moves
-                    .padding(.top, 10)
-                    .padding(.horizontal, 20)
-                ForEach(latoGame.board.layout.indices, id: \.self) { rowIndex in
+            VStack(spacing: 0) {
+                VStack {
                     HStack {
-                        ForEach(0..<latoGame.board.layout[rowIndex].count) { colIndex in
-                            Group {
-                                if latoGame.board.cellAt(row: rowIndex, col: colIndex).state == .dead {
-                                    CellView(color: Color("Background"))
-                                }
-                                else {
-                                    draw(cell: latoGame.board.cellAt(row: rowIndex, col: colIndex), at: Board.Coordiante(row: rowIndex, col: colIndex))
+                        Spacer()
+                        best
+                    }
+                    moves
+                }
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 20)
+                VStack {
+                    ForEach(latoGame.board.layout.indices, id: \.self) { rowIndex in
+                        HStack {
+                            ForEach(0..<latoGame.board.layout[rowIndex].count) { colIndex in
+                                Group {
+                                    if latoGame.board.cellAt(row: rowIndex, col: colIndex).state == .dead {
+                                        CellView(color: Color("Background"))
+                                    }
+                                    else {
+                                        draw(cell: latoGame.board.cellAt(row: rowIndex, col: colIndex), at: Board.Coordiante(row: rowIndex, col: colIndex))
+                                    }
                                 }
                             }
                         }

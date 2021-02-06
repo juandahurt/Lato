@@ -47,6 +47,9 @@ struct MainView: View {
             }
         }.onAppear {
             audioPlayer.play("background.mp3")
+            if !userSettings.playSound {
+                audioPlayer.pause()
+            }
         }
         .onChange(of: userSettings.playSound) { playSound in
             if !playSound { audioPlayer.pause() }

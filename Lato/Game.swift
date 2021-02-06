@@ -10,18 +10,37 @@ import Foundation
 struct Game {
     var board: Board
     var moves: Int = 0
+    var bestScore: Int
     var currentShape: Shape = Shape.shapes.randomElement()!
+    
+    init(board: Board) {
+        self.board = board
+        bestScore = Int(FileHelper().read(contentsOf: "score.txt") ?? "0")!
+    }
     
     mutating func put(shape: Shape, at coordinates: [Board.Coordiante]) {
         for coordinate in coordinates {
             board.layout[coordinate.row][coordinate.col] = shape.id
         }
         moves += 1
+        if currentScoreIsTheBest() {
+            updateBestScore()
+        }
         var randomShape = Shape.shapes.randomElement()!
         while randomShape == currentShape {
             randomShape = Shape.shapes.randomElement()!
         }
         currentShape = randomShape
+    }
+    
+    private func currentScoreIsTheBest() -> Bool {
+        let best = Int(FileHelper().read(contentsOf: "score.txt") ?? "0")!
+        return moves > best
+    }
+    
+    mutating private func updateBestScore() {
+        FileHelper().write(String(moves), to: "score.txt")
+        bestScore = moves
     }
     
     mutating func checkForFullLines(at coordinates: [Board.Coordiante]) -> [[Int]] {
