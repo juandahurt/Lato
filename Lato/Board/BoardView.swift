@@ -13,8 +13,9 @@ struct BoardView: View {
     @State private var cellsLocations: [[CGRect]] = [[CGRect]](repeating: [CGRect](repeating: .zero, count: 7), count: 10)
     @State private var currentShapeLocations: [CGRect] = [CGRect](repeating: .zero, count: 4)
     @State private var dyingLines: [[Int]] = []
-    @State private var shapeOffset: CGFloat = -300
+    @State private var shapeOffset: CGFloat = -UIScreen.main.bounds.width
     @State private var boardOffset: CGFloat = -UIScreen.main.bounds.width
+    @State private var currentShapeContainerSize: CGSize = .zero
     var onSettingsTap: () -> Void
     var isMovingToSettingsView: Binding<Bool>
 
@@ -51,7 +52,7 @@ struct BoardView: View {
         }
     }
     
-    func draw(cell: Cell, at coordinate: Board.Coordiante) -> some View {
+    func draw(cell: Cell, at coordinate: Board.Coordiante, in size: CGSize) -> some View {
         var color: Color = .clear
         var animateRow = false
         var animateCol = false
@@ -67,7 +68,7 @@ struct BoardView: View {
             color = possibleDropCoordinates.contains(coordinate) ? Shape.chooseShapeColor(for: latoGame.currentShape.color).opacity(0.4) : Color("Background-Dark")
         }
         
-        return CellView(color: color)
+        return CellView(color: color, in: size)
         .offset(x: boardOffset, y: 0)
         .overlay(
             GeometryReader { geometry in
@@ -87,14 +88,39 @@ struct BoardView: View {
             .foregroundColor(Color("Black"))
             .transition(.scale)
             .id("Moves \(latoGame.moves)")
-            .font(.custom("Poppins-SemiBold", size: 50))
+            .font(.custom("Poppins-SemiBold", size: UIScreen.main.bounds.height / 16))
     }
     
     var best: some View {
         HStack {
             Text("BEST: \(latoGame.best)")
-                .font(.custom("Poppins-SemiBold", size: 20))
+                .font(.custom("Poppins-SemiBold", size: UIScreen.main.bounds.height / 35))
                 .foregroundColor(Color("Background-Dark"))
+        }
+    }
+    
+    var board: some View {
+        GeometryReader { geometry in
+            VStack(spacing: geometry.size.width / 70) {
+                ForEach(latoGame.board.layout.indices, id: \.self) { rowIndex in
+                    HStack(spacing: geometry.size.width / 70) {
+                        ForEach(0..<latoGame.board.layout[rowIndex].count) { colIndex in
+                            Group {
+                                if latoGame.board.cellAt(row: rowIndex, col: colIndex).state == .dead {
+                                    CellView(color: Color("Background"), in: geometry.size)
+                                }
+                                else {
+                                    draw(cell: latoGame.board.cellAt(row: rowIndex, col: colIndex), at: Board.Coordiante(row: rowIndex, col: colIndex), in: geometry.size)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .frame(width: geometry.size.width, height: nil, alignment: .center)
+            .overlay(Color.clear.onAppear {
+                currentShapeContainerSize = geometry.size
+            })
         }
     }
     
@@ -110,22 +136,7 @@ struct BoardView: View {
                 }
                     .padding(.vertical, 10)
                     .padding(.horizontal, 20)
-                VStack {
-                    ForEach(latoGame.board.layout.indices, id: \.self) { rowIndex in
-                        HStack {
-                            ForEach(0..<latoGame.board.layout[rowIndex].count) { colIndex in
-                                Group {
-                                    if latoGame.board.cellAt(row: rowIndex, col: colIndex).state == .dead {
-                                        CellView(color: Color("Background"))
-                                    }
-                                    else {
-                                        draw(cell: latoGame.board.cellAt(row: rowIndex, col: colIndex), at: Board.Coordiante(row: rowIndex, col: colIndex))
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                board
                 Spacer()
             }
             .padding(.bottom, 80)
@@ -135,7 +146,8 @@ struct BoardView: View {
                     shape: latoGame.currentShape,
                     onChanged: updatePossibleDropLocation,
                     onDrop: onDropShape,
-                    locations: $currentShapeLocations
+                    locations: $currentShapeLocations,
+                    size: currentShapeContainerSize
                 )
                 .onTapGesture {
                     latoGame.rotate()
@@ -147,13 +159,15 @@ struct BoardView: View {
                     }
                 }
                 .onChange(of: latoGame.currentShape.id) { _ in
-                    shapeOffset = -300
+                    shapeOffset = -UIScreen.main.bounds.width
                     withAnimation(Animation.easeInOut.delay(0.2)) {
                         shapeOffset = 0
                     }
                 }
                 HStack {
                     Image("Restart")
+                        .resizable()
+                        .frame(width: UIScreen.main.bounds.height / 35, height: UIScreen.main.bounds.height / 35)
                         .onTapGesture {
                             withAnimation(.easeIn) {
                                 latoGame.restart()
@@ -161,6 +175,8 @@ struct BoardView: View {
                         }
                     Spacer()
                     Image("Settings")
+                        .resizable()
+                        .frame(width: UIScreen.main.bounds.height / 35, height: UIScreen.main.bounds.height / 35)
                         .onTapGesture {
                             onSettingsTap()
                         }
@@ -168,7 +184,7 @@ struct BoardView: View {
                 .padding(.horizontal, 20)
             }
             .frame(width: UIScreen.main.bounds.width)
-            .padding(.bottom, 20)
+            .padding(.bottom, 15)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("Background"))

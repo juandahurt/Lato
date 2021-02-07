@@ -14,6 +14,8 @@ struct SettingsView: View {
     var navBar: some View {
         HStack {
             Image("Back")
+                .resizable()
+                .frame(width: UIScreen.main.bounds.height / 40, height: UIScreen.main.bounds.height / 40)
                 .onTapGesture {
                     onBackTap()
                 }
@@ -25,7 +27,7 @@ struct SettingsView: View {
         VStack(alignment: .leading) {
             Text("Settings")
                 .foregroundColor(.black)
-                .font(.custom("Poppins-SemiBold", size: 20))
+                .font(.custom("Poppins-SemiBold", size: UIScreen.main.bounds.height / 35))
                 .padding(.top, 20)
             soundEffects
         }
@@ -34,16 +36,19 @@ struct SettingsView: View {
     var soundEffects: some View {
         HStack {
             ZStack {
-                RoundedRectangle(cornerRadius: 15)
+                RoundedRectangle(cornerRadius: UIScreen.main.bounds.height / 70)
                     .fill(Color("Background-Dark"))
-                    .frame(width: 40, height: 40)
+                    .frame(width: UIScreen.main.bounds.height / 30, height: UIScreen.main.bounds.height / 30)
                 Group {
                     if userSettings.playSound {
                         Image("Check")
+                            .resizable()
+                            .frame(width: UIScreen.main.bounds.height / 45, height: UIScreen.main.bounds.height / 45)
                     }
                 }
             }
             Text("Sound")
+                .font(Font.system(size: UIScreen.main.bounds.height / 40))
                 .foregroundColor(.black)
         }
         .onTapGesture {
@@ -55,25 +60,26 @@ struct SettingsView: View {
         VStack(alignment: .leading) {
             Text("Board")
                 .foregroundColor(.black)
-                .font(.custom("Poppins-SemiBold", size: 20))
+                .font(.custom("Poppins-SemiBold", size: UIScreen.main.bounds.height / 35))
                 .padding(.top, 20)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
                     ForEach(Board.boards) { board in
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color("Background-Dark"))
-                                .frame(width: 125, height: 173)
-                            draw(board: board)
+                        VStack {
+                            
+                            GeometryReader { geometry in
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color("Background-Dark"))
+                                    draw(board: board, in: geometry.size)
+                                }
+                            }
+                            .frame(width: UIScreen.main.bounds.height / 8, height: UIScreen.main.bounds.height / 7)
                             Group {
                                 if board.id == userSettings.selectedBoard.id {
-                                    ZStack {
-                                        Circle()
-                                            .fill(Color.white)
-                                            .frame(width: 30, height: 30)
-                                        Image("Check")
-                                    }
-                                    .offset(x: 0, y: 173 / 2)
+                                    Circle()
+                                        .fill(Color("Background-Dark"))
+                                        .frame(width: UIScreen.main.bounds.height / 14, height: UIScreen.main.bounds.height / 40)
                                 }
                             }
                         }
@@ -82,19 +88,19 @@ struct SettingsView: View {
                         }
                     }
                 }
-                .frame(height: 173 + 30)
+                .frame(height: UIScreen.main.bounds.height / 7 + UIScreen.main.bounds.height / 40 + 10)
             }
         }
     }
     
-    func draw(board: Board) -> some View {
-        VStack(spacing: 2) {
+    func draw(board: Board, in size: CGSize) -> some View {
+        VStack(spacing: size.width / 70) {
             ForEach(board.layout.indices, id: \.self) { rowIndex in
-                HStack(spacing: 2) {
+                HStack(spacing: size.width / 70) {
                     ForEach(0..<board.layout[rowIndex].count) { colIndex in
-                        RoundedRectangle(cornerRadius: 4)
+                        RoundedRectangle(cornerRadius: size.height / 30)
                             .fill(board.layout[rowIndex][colIndex] == 1 ? Color("Background") : Color("Background-Dark"))
-                            .frame(width: 11.86, height: 11.86)
+                            .frame(width: size.height / 12, height: size.height / 12)
                     }
                 }
             }
@@ -104,16 +110,16 @@ struct SettingsView: View {
     var credits: some View {
         HStack {
             Spacer()
-            Text(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String + " - juandahurt")
+            Text(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String + " - Juan Hurtado")
                 .foregroundColor(Color("Background-Dark"))
-                .font(.custom("Poppins-SemiBold", size: 12))
+                .font(.custom("Poppins-SemiBold", size: UIScreen.main.bounds.height / 50))
             Spacer()
         }
         .padding(.bottom, 15)
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: UIScreen.main.bounds.height / 40) {
             navBar
             settings
             boardPicker
@@ -121,8 +127,8 @@ struct SettingsView: View {
             credits
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.horizontal, 20)
-        .padding(.top, 30)
+        .padding(.horizontal, UIScreen.main.bounds.width / 20)
+        .padding(.top, UIScreen.main.bounds.height / 40)
         .background(Color("Background"))
         .statusBar(hidden: true)
     }

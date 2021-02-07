@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct CellView: View {
-    var color: Color = Color("Background-Dark")
+    var color: Color
+    var size: CGSize
+    
+    init(color: Color, in size: CGSize) {
+        self.color = color
+        self.size = size
+    }
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 15)
+        RoundedRectangle(cornerRadius: size.height / 30)
             .fill(color)
-            .frame(width: 40, height: 40)
+            .frame(width: size.height / 12, height: size.height / 12)
     }
 }

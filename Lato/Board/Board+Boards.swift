@@ -53,5 +53,20 @@ extension Board {
         ]
     )
     
-    static let boards: [Board] = [.diamond, .minesWeeper, .rectangle]
+    static let x = Board(
+        id: 4,
+        layout: [
+            [1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1],
+            [1,1,0,1,0,1,1],
+            [1,1,1,0,1,1,1],
+            [1,1,0,1,0,1,1],
+            [1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1],
+        ]
+    )
+    
+    static let boards: [Board] = [.diamond, .minesWeeper, .rectangle, .x]
 }

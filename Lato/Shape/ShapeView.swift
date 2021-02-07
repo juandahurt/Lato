@@ -12,28 +12,29 @@ struct ShapeView: View {
     var onChanged: () -> Void
     var onDrop: () -> Void
     var locations: Binding<[CGRect]>
+    var size: CGSize
     @State private var dragAmount: CGSize = .zero
     @State private var cellIndex = 0
-    @State private var scale = CGSize(width: 0.4, height: 0.4)
+    @State private var scale = CGSize(width: 0.35, height: 0.35)
     
     var body: some View {
-        VStack {
+        VStack(spacing: size.width / 70) {
             ForEach(shape.layout.indices, id: \.self) { rowIndex in
-                HStack {
+                HStack(spacing: size.width / 70) {
                     ForEach(0..<shape.layout[rowIndex].count, id: \.self) { colIndex in
                         Group {
                             if shape.getCellAt(row: rowIndex, col: colIndex).state == .alive {
                                 GeometryReader { geometry in
-                                    CellView(color: Shape.chooseShapeColor(for: shape.color))
+                                    CellView(color: Shape.chooseShapeColor(for: shape.color), in: size)
                                         .onChange(of: dragAmount) { _ in
                                             locations.wrappedValue[cellIndex] = geometry.frame(in: .global)
                                             cellIndex += 1
                                             if cellIndex == 4 { cellIndex = 0 }
                                         }
                                 }
-                                .frame(width: 40, height: 40)
+                                .frame(width: size.height / 12, height: size.height / 12)
                             } else {
-                                CellView(color: .clear)
+                                CellView(color: .clear, in: size)
                             }
                         }
                     }
@@ -53,7 +54,7 @@ struct ShapeView: View {
                     onChanged()
                 }
                 .onEnded { value in
-                    scale = CGSize(width: 0.4, height: 0.4)
+                    scale = CGSize(width: 0.35, height: 0.35)
                     dragAmount = .zero
                     onDrop()
                 }
