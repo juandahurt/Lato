@@ -10,6 +10,7 @@
 		3D23264025CDB5C10046B5D8 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D23263F25CDB5C10046B5D8 /* background.mp3 */; };
 		3D23264525CDB7460046B5D8 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23264425CDB7460046B5D8 /* AudioPlayer.swift */; };
 		3D25114825CEF31B0042546B /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D25114725CEF31A0042546B /* FileHelper.swift */; };
+		3D26F74F25EAB0AD0008F67B /* Shape+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26F74E25EAB0AD0008F67B /* Shape+Equatable.swift */; };
 		3D34460625CD8B44005D1C04 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D34460525CD8B44005D1C04 /* MainView.swift */; };
 		3D5C0FC825C7A1590093CB5F /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D5C0FC725C7A1590093CB5F /* Poppins-SemiBold.ttf */; };
 		3D651C6425C5F31400C3DF19 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D651C6325C5F31400C3DF19 /* Shape.swift */; };
@@ -34,6 +35,7 @@
 		3D23263F25CDB5C10046B5D8 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 		3D23264425CDB7460046B5D8 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		3D25114725CEF31A0042546B /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
+		3D26F74E25EAB0AD0008F67B /* Shape+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shape+Equatable.swift"; sourceTree = "<group>"; };
 		3D34460525CD8B44005D1C04 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3D5C0FC725C7A1590093CB5F /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		3D651C6325C5F31400C3DF19 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				3D651C6625C5F38400C3DF19 /* Shape+Shapes.swift */,
 				3D651C6D25C5F4FA00C3DF19 /* ShapeView.swift */,
 				3D651C7F25C61DCA00C3DF19 /* Shape+Color.swift */,
+				3D26F74E25EAB0AD0008F67B /* Shape+Equatable.swift */,
 			);
 			path = Shape;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			files = (
 				3DC8088C25C5D45000DF491A /* LatoApp.swift in Sources */,
 				3DC808A725C5D89F00DF491A /* Board.swift in Sources */,
+				3D26F74F25EAB0AD0008F67B /* Shape+Equatable.swift in Sources */,
 				3DC808AD25C5DA4B00DF491A /* CellView.swift in Sources */,
 				3D651C6425C5F31400C3DF19 /* Shape.swift in Sources */,
 				3D651C6E25C5F4FA00C3DF19 /* ShapeView.swift in Sources */,

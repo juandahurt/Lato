@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Shape: Equatable {
+struct Shape {
     enum Color {
         case red, yellow, black, blue, green
     }
