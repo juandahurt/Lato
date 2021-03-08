@@ -56,43 +56,6 @@ struct SettingsView: View {
         }
     }
     
-    var boardPicker: some View {
-        VStack(alignment: .leading) {
-            Text("Board")
-                .foregroundColor(.black)
-                .font(.custom("Poppins-SemiBold", size: UIScreen.main.bounds.height / 35))
-                .padding(.top, 20)
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 20) {
-                    ForEach(Board.boards) { board in
-                        VStack {
-                            
-                            GeometryReader { geometry in
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color("Background-Dark"))
-                                    draw(board: board, in: geometry.size)
-                                }
-                            }
-                            .frame(width: UIScreen.main.bounds.height / 8, height: UIScreen.main.bounds.height / 7)
-                            Group {
-                                if board.id == userSettings.selectedBoard.id {
-                                    Circle()
-                                        .fill(Color("Background-Dark"))
-                                        .frame(width: UIScreen.main.bounds.height / 14, height: UIScreen.main.bounds.height / 40)
-                                }
-                            }
-                        }
-                        .onTapGesture {
-                            userSettings.selectedBoard = board
-                        }
-                    }
-                }
-                .frame(height: UIScreen.main.bounds.height / 7 + UIScreen.main.bounds.height / 40 + 10)
-            }
-        }
-    }
-    
     func draw(board: Board, in size: CGSize) -> some View {
         VStack(spacing: size.width / 70) {
             ForEach(board.layout.indices, id: \.self) { rowIndex in
@@ -107,10 +70,10 @@ struct SettingsView: View {
         }
     }
     
-    var credits: some View {
+    var version: some View {
         HStack {
             Spacer()
-            Text(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String + " - Juan Hurtado")
+            Text(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String)
                 .foregroundColor(Color("Background-Dark"))
                 .font(.custom("Poppins-SemiBold", size: UIScreen.main.bounds.height / 50))
             Spacer()
@@ -122,9 +85,8 @@ struct SettingsView: View {
         VStack(alignment: .leading, spacing: UIScreen.main.bounds.height / 40) {
             navBar
             settings
-            boardPicker
             Spacer()
-            credits
+            version
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal, UIScreen.main.bounds.width / 20)

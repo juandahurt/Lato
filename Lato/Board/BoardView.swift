@@ -49,6 +49,9 @@ struct BoardView: View {
             }
             dyingLines = latoGame.checkForFullLines(at: possibleDropCoordinates)
             possibleDropCoordinates.removeAll()
+            withAnimation(Animation.spring().delay(0.5)) {
+                latoGame.checkIfCurrentShapeFitsInBoard()
+            }
         }
     }
     
@@ -124,7 +127,7 @@ struct BoardView: View {
         }
     }
     
-    var body: some View {
+    var _body: some View {
         ZStack {
             VStack(spacing: 0) {
                 VStack {
@@ -149,9 +152,6 @@ struct BoardView: View {
                     locations: $currentShapeLocations,
                     size: currentShapeContainerSize
                 )
-                .onTapGesture {
-                    latoGame.rotate()
-                }
                 .offset(x: shapeOffset, y: 0)
                 .onAppear {
                     withAnimation(Animation.easeInOut.delay(0.2)) {
@@ -165,14 +165,7 @@ struct BoardView: View {
                     }
                 }
                 HStack {
-                    Image("Restart")
-                        .resizable()
-                        .frame(width: UIScreen.main.bounds.height / 35, height: UIScreen.main.bounds.height / 35)
-                        .onTapGesture {
-                            withAnimation(.easeIn) {
-                                latoGame.restart()
-                            }
-                        }
+                    reStart
                     Spacer()
                     Image("Settings")
                         .resizable()
@@ -186,8 +179,42 @@ struct BoardView: View {
             .frame(width: UIScreen.main.bounds.width)
             .padding(.bottom, 15)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("Background"))
-        .statusBar(hidden: true)
+    }
+    
+    var reStart: some View {
+        Image("Restart")
+            .resizable()
+            .frame(width: UIScreen.main.bounds.height / 35, height: UIScreen.main.bounds.height / 35)
+            .onTapGesture {
+                latoGame.restart()
+            }
+    }
+    
+    var gameOver: some View {
+        ZStack {
+            Color("Black").opacity(0.6)
+            ZStack {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.white)
+                VStack {
+                    Text("GAME OVER")
+                        .font(.custom("Poppins-SemiBold", size: UIScreen.main.bounds.height / 35))
+                        .foregroundColor(.black)
+                    reStart
+                }
+            }.frame(maxWidth: UIScreen.main.bounds.width * 0.4, maxHeight: UIScreen.main.bounds.height * 0.15)
+        }
+    }
+    
+    @ViewBuilder var body: some View {
+        ZStack {
+            _body
+            if latoGame.isGameOver {
+                gameOver
+            }
+        }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color("Background"))
+            .statusBar(hidden: true)
     }
 }

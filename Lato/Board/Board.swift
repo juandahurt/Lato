@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct Board: Identifiable {
-    var id: Int
+struct Board {
     var layout: [[Int]]
     
     struct Coordiante: Equatable {

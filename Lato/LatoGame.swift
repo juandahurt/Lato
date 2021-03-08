@@ -8,7 +8,7 @@
 import Foundation
 
 class LatoGame: ObservableObject {
-    @Published private(set) var game = Game(board: .diamond)
+    @Published private(set) var game = Game(board: .rectangle)
     
     var board: Board {
         game.board
@@ -26,6 +26,10 @@ class LatoGame: ObservableObject {
         game.currentShape
     }
     
+    var isGameOver: Bool {
+        game.isGameOver
+    }
+    
     func put(shape: Shape, at coordinates: [Board.Coordiante]) {
         game.put(shape: shape, at: coordinates)
     }
@@ -34,8 +38,8 @@ class LatoGame: ObservableObject {
         game.checkForFullLines(at: coordinates)
     }
     
-    func rotate() {
-        game.rotate()
+    func checkIfCurrentShapeFitsInBoard() {
+        game.checkIfCurrentShapeFitsInBoard()
     }
     
     func restart() {

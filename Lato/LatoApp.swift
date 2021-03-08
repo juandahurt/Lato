@@ -13,7 +13,7 @@ struct LatoApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(UserSettings(selectedBoard: .diamond))
+                .environmentObject(UserSettings())
         }
     }
 }

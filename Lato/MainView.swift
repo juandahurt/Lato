@@ -37,10 +37,6 @@ struct MainView: View {
                         withAnimation(.easeIn) {
                             showBoard = true
                         }
-                        if userSettings.selectedBoard.id != latoGame.board.id {
-                            latoGame.restart()
-                            latoGame.set(board: userSettings.selectedBoard)
-                        }
                     }
                 )
                 .transition(.slide)

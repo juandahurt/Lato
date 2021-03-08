@@ -8,11 +8,9 @@
 import Foundation
 
 class UserSettings: ObservableObject {
-    @Published var selectedBoard: Board
     @Published var playSound: Bool
     
-    init(selectedBoard: Board) {
-        self.selectedBoard = selectedBoard
+    init() {
         playSound = Bool(FileHelper().read(contentsOf: "sound.txt") ?? "true")!
     }
     

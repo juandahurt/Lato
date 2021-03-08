@@ -12,6 +12,7 @@ struct Game {
     var moves: Int = 0
     var bestScore: Int
     var currentShape: Shape = Shape.shapes.randomElement()!
+    var isGameOver: Bool = false
     
     init(board: Board) {
         self.board = board
@@ -31,6 +32,40 @@ struct Game {
             randomShape = Shape.shapes.randomElement()!
         }
         currentShape = randomShape
+        // rotate the shape randomly
+        var rotationTimes: Int = .random(in: 0...4)
+        while rotationTimes > 0 {
+            currentShape.rotate()
+            rotationTimes -= 1
+        }
+    }
+    
+    mutating func checkIfCurrentShapeFitsInBoard() {
+        // NOTA: Yo me pregunto: ¿exitirá alguna forma de hacer esta busqueda pero de forma eficiente?
+        let shapeLayout = currentShape.layout
+        var placesWhereTheShapeFits = 0
+        let rowLimit = board.layout.count - shapeLayout.count
+        let colLimit = board.layout[0].count - shapeLayout[0].count
+        var foundAPlace = false
+        mainLoop: for boardRow in 0...rowLimit {
+            for boardCol in 0...colLimit {
+                placesWhereTheShapeFits = 0
+                for shapeRow in shapeLayout.indices {
+                    for shapeCol in shapeLayout[0].indices {
+                        let shapeCell = currentShape.getCellAt(row: shapeRow, col: shapeCol)
+                        let boardCell = board.cellAt(row: boardRow + shapeRow, col: boardCol + shapeCol)
+                        if  shapeCell.state == .alive && boardCell.shape == .none {
+                            placesWhereTheShapeFits += 1
+                            if placesWhereTheShapeFits == 4 {
+                                foundAPlace = true
+                                break mainLoop
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        isGameOver = !foundAPlace
     }
     
     private func currentScoreIsTheBest() -> Bool {
@@ -75,12 +110,9 @@ struct Game {
         return [fullRows, fullCols]
     }
     
-    mutating func rotate() {
-        currentShape.rotate()
-    }
-    
     mutating func restart() {
         moves = 0
+        isGameOver = false
         for rowIndex in board.layout.indices {
             for colIndex in board.layout[rowIndex].indices {
                 if board.layout[rowIndex][colIndex] != 0 {
