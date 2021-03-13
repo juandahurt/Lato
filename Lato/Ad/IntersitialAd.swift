@@ -12,7 +12,7 @@ import UIKit
 final class Interstitial: NSObject, GADInterstitialDelegate {
     static private let testIntersitialID = "ca-app-pub-3940256099942544/1033173712"
     static private let interstitialID = "ca-app-pub-3880886608489890/9105515396"
-    var interstitial: GADInterstitial = GADInterstitial(adUnitID: interstitialID)
+    var interstitial: GADInterstitial = GADInterstitial(adUnitID: testIntersitialID)
     
     override init() {
         super.init()
