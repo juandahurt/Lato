@@ -1,0 +1,6 @@
+framework module Pods_Lato {
+  umbrella header "Pods-Lato-umbrella.h"
+
+  export *
+  module * { export * }
+}

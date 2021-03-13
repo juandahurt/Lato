@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F367038E040A1E8FF28F626 /* Pods_Lato.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D21BE884D02AB2E974105E9 /* Pods_Lato.framework */; };
 		3D23264025CDB5C10046B5D8 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D23263F25CDB5C10046B5D8 /* background.mp3 */; };
 		3D23264525CDB7460046B5D8 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23264425CDB7460046B5D8 /* AudioPlayer.swift */; };
 		3D25114825CEF31B0042546B /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D25114725CEF31A0042546B /* FileHelper.swift */; };
@@ -29,9 +30,11 @@
 		3DC808AA25C5D90F00DF491A /* Board+Boards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC808A925C5D90F00DF491A /* Board+Boards.swift */; };
 		3DC808AD25C5DA4B00DF491A /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC808AC25C5DA4B00DF491A /* CellView.swift */; };
 		3DC808B525C5F21400DF491A /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC808B425C5F21400DF491A /* BoardView.swift */; };
+		3DFD9E5025F5AFD10036183B /* IntersitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9E4F25F5AFD10036183B /* IntersitialAd.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07FBC95CE972FBED3352F84D /* Pods-Lato.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lato.debug.xcconfig"; path = "Target Support Files/Pods-Lato/Pods-Lato.debug.xcconfig"; sourceTree = "<group>"; };
 		3D23263F25CDB5C10046B5D8 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 		3D23264425CDB7460046B5D8 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		3D25114725CEF31A0042546B /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
@@ -56,6 +59,9 @@
 		3DC808A925C5D90F00DF491A /* Board+Boards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+Boards.swift"; sourceTree = "<group>"; };
 		3DC808AC25C5DA4B00DF491A /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		3DC808B425C5F21400DF491A /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		3DFD9E4F25F5AFD10036183B /* IntersitialAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntersitialAd.swift; sourceTree = "<group>"; };
+		7D21BE884D02AB2E974105E9 /* Pods_Lato.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lato.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		867DA4712B1EF48AED16965D /* Pods-Lato.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lato.release.xcconfig"; path = "Target Support Files/Pods-Lato/Pods-Lato.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,12 +69,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F367038E040A1E8FF28F626 /* Pods_Lato.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B9420965E4831C98A6F103D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				07FBC95CE972FBED3352F84D /* Pods-Lato.debug.xcconfig */,
+				867DA4712B1EF48AED16965D /* Pods-Lato.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		3D23264325CDB7370046B5D8 /* Media */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +133,8 @@
 			children = (
 				3DC8088A25C5D45000DF491A /* Lato */,
 				3DC8088925C5D45000DF491A /* Products */,
+				3B9420965E4831C98A6F103D /* Pods */,
+				4B045CC06D6E5EE4B89E5117 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +149,7 @@
 		3DC8088A25C5D45000DF491A /* Lato */ = {
 			isa = PBXGroup;
 			children = (
+				3DFD9E4E25F5AFC10036183B /* Ad */,
 				3D25114625CEF2EE0042546B /* Helpers */,
 				3D23264325CDB7370046B5D8 /* Media */,
 				3D94A3C825CB02AF00EE50FF /* Settings */,
@@ -187,6 +207,22 @@
 			path = Shape;
 			sourceTree = "<group>";
 		};
+		3DFD9E4E25F5AFC10036183B /* Ad */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD9E4F25F5AFD10036183B /* IntersitialAd.swift */,
+			);
+			path = Ad;
+			sourceTree = "<group>";
+		};
+		4B045CC06D6E5EE4B89E5117 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D21BE884D02AB2E974105E9 /* Pods_Lato.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -194,9 +230,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DC8089725C5D45200DF491A /* Build configuration list for PBXNativeTarget "Lato" */;
 			buildPhases = (
+				92EFB12924ED8350802AB713 /* [CP] Check Pods Manifest.lock */,
 				3DC8088425C5D45000DF491A /* Sources */,
 				3DC8088525C5D45000DF491A /* Frameworks */,
 				3DC8088625C5D45000DF491A /* Resources */,
+				6331E3CEA37BF8FAF0E32E92 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -253,6 +291,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6331E3CEA37BF8FAF0E32E92 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lato/Pods-Lato-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lato/Pods-Lato-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lato/Pods-Lato-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92EFB12924ED8350802AB713 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lato-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3DC8088425C5D45000DF491A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -267,6 +347,7 @@
 				3D651C6725C5F38400C3DF19 /* Shape+Shapes.swift in Sources */,
 				3DC808AA25C5D90F00DF491A /* Board+Boards.swift in Sources */,
 				3D651C7925C6042400C3DF19 /* LatoGame.swift in Sources */,
+				3DFD9E5025F5AFD10036183B /* IntersitialAd.swift in Sources */,
 				3DC808B525C5F21400DF491A /* BoardView.swift in Sources */,
 				3DC808A325C5D75A00DF491A /* Cell.swift in Sources */,
 				3D651C8025C61DCA00C3DF19 /* Shape+Color.swift in Sources */,
@@ -400,6 +481,7 @@
 		};
 		3DC8089825C5D45200DF491A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07FBC95CE972FBED3352F84D /* Pods-Lato.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -424,6 +506,7 @@
 		};
 		3DC8089925C5D45200DF491A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 867DA4712B1EF48AED16965D /* Pods-Lato.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

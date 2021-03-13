@@ -18,6 +18,7 @@ struct BoardView: View {
     @State private var currentShapeContainerSize: CGSize = .zero
     var onSettingsTap: () -> Void
     var isMovingToSettingsView: Binding<Bool>
+    var intersitial = Interstitial()
 
     func updatePossibleDropLocation() {
         dyingLines.removeAll()
@@ -187,6 +188,7 @@ struct BoardView: View {
             .frame(width: UIScreen.main.bounds.height / 35, height: UIScreen.main.bounds.height / 35)
             .onTapGesture {
                 latoGame.restart()
+                intersitial.showAd()
             }
     }
     
@@ -202,7 +204,7 @@ struct BoardView: View {
                         .foregroundColor(.black)
                     reStart
                 }
-            }.frame(maxWidth: UIScreen.main.bounds.width * 0.4, maxHeight: UIScreen.main.bounds.height * 0.15)
+            }.frame(maxWidth: UIScreen.main.bounds.width * 0.45, maxHeight: UIScreen.main.bounds.height * 0.15)
         }
     }
     
